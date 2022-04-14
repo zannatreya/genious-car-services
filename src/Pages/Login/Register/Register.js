@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import { Link, navigate, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
@@ -30,8 +31,12 @@ const Register = () => {
     const NavigateLogin = event => {
         navigate('/login');
     }
+    if (loading) {
+        return <Loading></Loading>
+    }
+
     if (user) {
-        navigate('/home');
+        console.log('user', user);
     }
     return (
         <div className='mx-auto w-50 container'>
@@ -54,10 +59,10 @@ const Register = () => {
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Check type="checkbox" label="Accept Genious Car Terms & Conditions" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary w-50 mx-auto d-block mb-2" type="submit">
+                    Register
                 </Button>
             </Form>
             <p>Already have an account? <Link to="/login"
