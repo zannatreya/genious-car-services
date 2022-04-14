@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 import { Link, navigate, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
     const nameRef = useRef('');
@@ -59,7 +60,11 @@ const Register = () => {
                     Submit
                 </Button>
             </Form>
-            <p>Already have an account? <Link to="/login" onClick={NavigateLogin} className='text-danger text-decoration-none pe-auto'>Please Login</Link></p>
+            <p>Already have an account? <Link to="/login"
+                onClick={NavigateLogin} className='text-danger 
+            text-decoration-none pe-auto'>Please Login</Link></p>
+
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
